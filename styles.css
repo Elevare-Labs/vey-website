@@ -474,6 +474,17 @@ a {
   text-underline-offset: 3px;
 }
 
+/* Buttons inside legal pages must keep their button styling */
+.legal-content a.button-primary {
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
+.legal-content a.button-primary:hover {
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
 .updated-date {
   display: block;
   margin-top: 18px;
