@@ -29,6 +29,7 @@ function initializeTurnstile() {
     action: "contact_form",
     theme: "dark",
     size: "flexible",
+    appearance: "interaction-only",
     callback(token) {
       turnstileToken = token;
       clearStatusIfSecurityError();
