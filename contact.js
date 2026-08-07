@@ -25,31 +25,59 @@ function initializeTurnstile() {
   }
 
   turnstileWidgetId = window.turnstile.render("#contact-turnstile", {
-    sitekey: TURNSTILE_SITE_KEY,
-    action: "contact_form",
-    theme: "dark",
-    size: "flexible",
-    appearance: "interaction-only",
-    callback(token) {
-      turnstileToken = token;
-      clearStatusIfSecurityError();
-    },
-    "expired-callback"() {
-      turnstileToken = "";
-    },
-    "timeout-callback"() {
-      turnstileToken = "";
-    },
-    "error-callback"() {
-      turnstileToken = "";
-      setStatus(
-        "The security check could not be completed. Please try again.",
-        "error",
-        "security",
-      );
-    },
-  });
-}
+  sitekey: TURNSTILE_SITE_KEY,
+  action: "contact_form",
+  theme: "dark",
+  size: "flexible",
+  appearance: "interaction-only",
+
+  "before-interactive-callback"() {
+    document
+      .querySelector(".contact-security")
+      ?.classList.add("is-interactive");
+  },
+
+  "after-interactive-callback"() {
+    document
+      .querySelector(".contact-security")
+      ?.classList.remove("is-interactive");
+  },
+
+  callback(token) {
+    turnstileToken = token;
+    clearStatusIfSecurityError();
+  },
+
+  "expired-callback"() {
+    turnstileToken = "";
+
+    document
+      .querySelector(".contact-security")
+      ?.classList.remove("is-interactive");
+  },
+
+  "timeout-callback"() {
+    turnstileToken = "";
+
+    document
+      .querySelector(".contact-security")
+      ?.classList.remove("is-interactive");
+  },
+
+  "error-callback"() {
+    turnstileToken = "";
+
+    document
+      .querySelector(".contact-security")
+      ?.classList.remove("is-interactive");
+
+    setStatus(
+      "The security check could not be completed. Please try again.",
+      "error",
+      "security",
+    );
+  },
+});
 
 async function handleSubmit(event) {
   event.preventDefault();
