@@ -11,8 +11,20 @@ const statusElement = document.getElementById("contact-status");
 const submitButton = document.getElementById("contact-submit");
 
 if (form && statusElement && submitButton) {
-  initializeTurnstile();
+  // Always intercept the native form submission first.
   form.addEventListener("submit", handleSubmit);
+
+  try {
+    initializeTurnstile();
+  } catch (error) {
+    console.error("Turnstile initialization failed:", error);
+
+    setStatus(
+      "The security check could not be loaded. Please refresh the page or email support@veydarts.com.",
+      "error",
+      "security",
+    );
+  }
 }
 
 function initializeTurnstile() {
@@ -20,64 +32,80 @@ function initializeTurnstile() {
     setStatus(
       "The security check could not be loaded. Please refresh the page or contact support@veydarts.com.",
       "error",
+      "security",
     );
     return;
   }
 
   turnstileWidgetId = window.turnstile.render("#contact-turnstile", {
-  sitekey: TURNSTILE_SITE_KEY,
-  action: "contact_form",
-  theme: "dark",
-  size: "flexible",
-  appearance: "interaction-only",
+    sitekey: TURNSTILE_SITE_KEY,
+    action: "contact_form",
+    theme: "dark",
+    size: "flexible",
+    appearance: "interaction-only",
 
-  "before-interactive-callback"() {
-    document
-      .querySelector(".contact-security")
-      ?.classList.add("is-interactive");
-  },
+    "before-interactive-callback"() {
+      document
+        .querySelector(".contact-security")
+        ?.classList.add("is-interactive");
+    },
 
-  "after-interactive-callback"() {
-    document
-      .querySelector(".contact-security")
-      ?.classList.remove("is-interactive");
-  },
+    "after-interactive-callback"() {
+      document
+        .querySelector(".contact-security")
+        ?.classList.remove("is-interactive");
+    },
 
-  callback(token) {
-    turnstileToken = token;
-    clearStatusIfSecurityError();
-  },
+    callback(token) {
+      turnstileToken = token;
+      clearStatusIfSecurityError();
+    },
 
-  "expired-callback"() {
-    turnstileToken = "";
+    "expired-callback"() {
+      turnstileToken = "";
 
-    document
-      .querySelector(".contact-security")
-      ?.classList.remove("is-interactive");
-  },
+      document
+        .querySelector(".contact-security")
+        ?.classList.remove("is-interactive");
+    },
 
-  "timeout-callback"() {
-    turnstileToken = "";
+    "timeout-callback"() {
+      turnstileToken = "";
 
-    document
-      .querySelector(".contact-security")
-      ?.classList.remove("is-interactive");
-  },
+      document
+        .querySelector(".contact-security")
+        ?.classList.remove("is-interactive");
+    },
 
-  "error-callback"() {
-    turnstileToken = "";
+    "unsupported-callback"() {
+      turnstileToken = "";
 
-    document
-      .querySelector(".contact-security")
-      ?.classList.remove("is-interactive");
+      document
+        .querySelector(".contact-security")
+        ?.classList.remove("is-interactive");
 
-    setStatus(
-      "The security check could not be completed. Please try again.",
-      "error",
-      "security",
-    );
-  },
-});
+      setStatus(
+        "The security check is not supported by this browser. Please try another browser or email support@veydarts.com.",
+        "error",
+        "security",
+      );
+    },
+
+    "error-callback"() {
+      turnstileToken = "";
+
+      document
+        .querySelector(".contact-security")
+        ?.classList.remove("is-interactive");
+
+      setStatus(
+        "The security check could not be completed. Please try again.",
+        "error",
+        "security",
+      );
+    },
+  });
+}
 
 async function handleSubmit(event) {
   event.preventDefault();
