@@ -910,3 +910,165 @@ a {
     overflow-x: auto;
   }
 }
+
+/* Download landing page */
+
+.download-page {
+  min-height: 100vh;
+}
+
+.download-back-link {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 650;
+  transition: color 160ms ease;
+}
+
+.download-back-link:hover {
+  color: var(--text-primary);
+}
+
+.download-main {
+  min-height: calc(100vh - 76px - 150px);
+}
+
+.download-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 92px 0 84px;
+}
+
+.download-hero::before {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  width: 720px;
+  height: 720px;
+  border-radius: 50%;
+  background: rgba(62, 224, 110, 0.065);
+  filter: blur(130px);
+  content: "";
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.download-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+  align-items: center;
+  gap: 80px;
+}
+
+.download-copy h1 {
+  margin: 0;
+  font-size: clamp(52px, 7vw, 82px);
+  line-height: 0.98;
+  letter-spacing: -4px;
+}
+
+.download-description {
+  max-width: 590px;
+  margin: 28px 0 0;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.download-actions {
+  margin-top: 36px;
+}
+
+.google-play-badge-link {
+  display: inline-block;
+  line-height: 0;
+  border-radius: 10px;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.google-play-badge-link:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 8px 22px rgba(62, 224, 110, 0.14));
+}
+
+.google-play-badge-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.google-play-badge {
+  display: block;
+  width: 210px;
+  max-width: 100%;
+  height: auto;
+}
+
+.download-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.download-phone-glow {
+  position: absolute;
+  inset: 13% 5% 7%;
+  border-radius: 50%;
+  background: rgba(62, 224, 110, 0.12);
+  filter: blur(88px);
+  pointer-events: none;
+}
+
+.download-phone {
+  width: min(100%, 330px);
+}
+
+.download-footer {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .download-main {
+    min-height: auto;
+  }
+
+  .download-hero {
+    padding: 72px 0 74px;
+  }
+
+  .download-layout {
+    grid-template-columns: 1fr;
+    gap: 54px;
+  }
+
+  .download-visual {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .download-back-link {
+    font-size: 13px;
+  }
+
+  .download-hero {
+    padding: 58px 0 62px;
+  }
+
+  .download-copy h1 {
+    font-size: 48px;
+    letter-spacing: -2.5px;
+  }
+
+  .download-description {
+    font-size: 16px;
+  }
+
+  .download-actions {
+    margin-top: 30px;
+  }
+
+  .download-phone {
+    width: min(84vw, 310px);
+  }
+}
