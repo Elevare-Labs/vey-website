@@ -8,7 +8,7 @@
   <title>Privacy Policy – Vey</title>
 
   <meta name="description"
-    content="Learn how Vey processes and protects personal data when you visit the website or use the Vey darts training app." />
+    content="Learn how Vey processes personal data, account information, subscriptions and information related to third-party services." />
 
   <meta name="theme-color" content="#070a08" />
 
@@ -28,6 +28,7 @@
 
       <nav class="navigation-links" aria-label="Main navigation">
         <a href="index.html#features">Features</a>
+        <a href="index.html#premium">Premium</a>
         <a href="support.html">Support</a>
         <a href="privacy.html">Privacy</a>
       </nav>
@@ -53,7 +54,7 @@
         </p>
 
         <span class="updated-date">
-          Last updated: August 14, 2026
+          Last updated: August 28, 2026
         </span>
       </div>
     </section>
@@ -70,6 +71,7 @@
           <a href="#reminders">Training reminders</a>
           <a href="#support">Support requests</a>
           <a href="#tracking">Analytics and tracking</a>
+          <a href="#purchases">Purchases and subscriptions</a>
           <a href="#providers">Service providers</a>
           <a href="#transfers">International transfers</a>
           <a href="#retention">Data retention</a>
@@ -120,6 +122,7 @@
             <li>Optional Vey user accounts and cloud synchronization</li>
             <li>Transactional and security-related emails</li>
             <li>Support and account-deletion requests</li>
+            <li>Vey Premium purchases, subscriptions and entitlement management</li>
           </ul>
 
           <p>
@@ -217,11 +220,21 @@
           </p>
 
           <p>
-            When no account is connected, this information remains on the
-            device under the user's control. It may be removed through
-            applicable in-app functions, by clearing the app's storage or by
-            uninstalling the app, subject to the device and operating
-            system's storage and backup behaviour.
+            When no account is connected, the training and profile information
+            described above remains on the device under the user's control. It
+            may be removed through applicable in-app functions, by clearing the
+            app's storage or by uninstalling the app, subject to the device and
+            operating system's storage and backup behaviour.
+          </p>
+
+          <p>
+            On Android, the RevenueCat subscription SDK is initialized when the
+            app starts, including when no Vey account is connected. In that
+            situation RevenueCat may assign an anonymous App User ID and process
+            limited technical information needed to operate the subscription
+            infrastructure. Purchasing and restoring Vey Premium are only
+            available after signing in to a Vey account. Further details are
+            provided in section 10 below.
           </p>
 
           <h2 id="accounts">5. User accounts and cloud synchronization</h2>
@@ -275,6 +288,15 @@
           <p>
             Password authentication is handled through Supabase Auth.
             Passwords are not stored by Vey in readable plain text.
+          </p>
+
+          <p>
+            When an authenticated user uses the subscription functionality,
+            the Vey account's Supabase user ID is also used as the RevenueCat
+            App User ID. This links Premium entitlement status to the signed-in
+            Vey account. Vey does not send the user's email address, display
+            name, telephone number or other custom customer attributes to
+            RevenueCat.
           </p>
 
           <h2 id="emails">6. Authentication and security emails</h2>
@@ -477,43 +499,102 @@
           </p>
 
           <p>
-            If analytics, crash reporting, advertising or other external
-            tracking technologies are introduced in the future, this Privacy
-            Policy and, where required, the user's consent choices will be
-            updated before those technologies are used.
-          </p>
-
-          <h2>10. Purchases and subscriptions</h2>
-
-          <p>
-            Vey does not currently provide active in-app purchases or paid
-            subscriptions.
+            RevenueCat is used specifically for subscription processing,
+            entitlement management and subscription-related operational
+            information. It is not used by Vey for advertising, cross-app
+            tracking or general behavioural profiling. The related processing
+            is described in section 10.
           </p>
 
           <p>
-            Internal catalogue fields such as an
-            <code>isPremium</code> marker do not by themselves constitute a
-            purchase, subscription or payment-processing service.
+            If additional analytics, crash reporting, advertising or other
+            external tracking technologies are introduced in the future, this
+            Privacy Policy and, where required, the user's consent choices will
+            be updated before those technologies are used.
+          </p>
+
+          <h2 id="purchases">10. Purchases and subscriptions</h2>
+
+          <p>
+            Vey offers optional Vey Premium subscriptions on Android. Monthly
+            and annual subscription options may be offered through Google Play.
+            Eligible users may also be shown a seven-day free trial for the
+            annual subscription. The price, trial eligibility, billing period
+            and other purchase terms shown by Google Play before confirmation
+            are authoritative for the individual transaction.
           </p>
 
           <p>
-            If purchases or subscriptions are introduced in the future,
-            this Privacy Policy will be updated to explain the associated
-            payment and store processing.
+            Google Play handles the payment transaction. Vey uses RevenueCat,
+            Inc. to validate purchases, determine subscription and entitlement
+            status, support purchase restoration and provide the Premium access
+            associated with the signed-in Vey account.
           </p>
 
-          <h2>11. Google Play distribution</h2>
+          <p>
+            For these purposes, RevenueCat may process information including:
+          </p>
+
+          <ul>
+            <li>An anonymous RevenueCat App User ID when no Vey account is signed in</li>
+            <li>The signed-in Vey account's Supabase user ID as the RevenueCat App User ID</li>
+            <li>Device type, operating system and similar technical information</li>
+            <li>Product and offering identifiers</li>
+            <li>Purchase, renewal, cancellation, expiration and entitlement status</li>
+            <li>Transaction timing and subscription-period information</li>
+            <li>Price and currency information made available through the store</li>
+            <li>Google Play purchase tokens and related transaction information</li>
+          </ul>
 
           <p>
-            When Vey is downloaded or updated through Google Play, Google may
-            independently process information relating to the store account,
-            device, download, installation and use of Google Play.
+            Vey does not send the user's email address, display name or
+            telephone number to RevenueCat and does not manually collect an
+            advertising ID or other hardware identifier for RevenueCat. Vey
+            does not receive complete payment-card details from Google Play or
+            RevenueCat.
+          </p>
+
+          <p>
+            Vey does not persist Google Play purchase tokens, transaction IDs
+            or receipts in its own Supabase database. Subscription state and
+            product information used by the app are held as necessary to
+            provide the current app experience, while the underlying purchase
+            and entitlement records are handled by Google Play and RevenueCat.
+          </p>
+
+          <p>
+            Premium access is linked to the signed-in Vey account. RevenueCat
+            is configured to keep purchases with the original identified App
+            User ID. A purchase associated with one Vey account is therefore
+            not transferred to another existing Vey account merely because both
+            accounts are used on the same device or because Restore Purchases is
+            selected from the second account.
+          </p>
+
+          <p>
+            Where subscription processing is requested or an active Premium
+            entitlement is provided, the primary legal basis is Article 6(1)(b)
+            GDPR. Limited technical processing associated with SDK initialization,
+            security, fraud prevention, troubleshooting and the reliable operation
+            of the subscription infrastructure may be based on our legitimate
+            interests under Article 6(1)(f) GDPR.
+          </p>
+
+          <h2>11. Google Play distribution and billing</h2>
+
+          <p>
+            When Vey is downloaded, updated or subscribed to through Google
+            Play, Google independently processes information relating to the
+            user's Google account, device, app installation, purchase, payment
+            method, subscription and billing activity.
           </p>
 
           <p>
             This processing is governed by Google's own terms and privacy
-            information. Vey does not receive the user's Google-account
-            password or complete payment-card details.
+            information. Google Play determines purchase eligibility, local
+            prices, applicable taxes, trial eligibility, billing and refund
+            handling. Vey does not receive the user's Google-account password
+            or complete payment-card details.
           </p>
 
           <h2 id="providers">12. Service providers and recipients</h2>
@@ -614,12 +695,29 @@
             </a>
           </p>
 
+          <h3>RevenueCat</h3>
+
+          <p>
+            RevenueCat, Inc. provides subscription validation, entitlement
+            management, purchase restoration and subscription-related
+            operational infrastructure for Vey Premium. RevenueCat may process
+            the App User ID, technical device information and Google Play
+            transaction information described in section 10.
+          </p>
+
+          <p>
+            <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">
+              RevenueCat Privacy Policy
+            </a>
+          </p>
+
           <h3>Google</h3>
 
           <p>
             Google provides the Gmail inbox used to receive and manage
             forwarded support messages. Google also operates Google Play,
-            through which the Android app may be distributed.
+            through which the Android app is distributed and Vey Premium
+            subscriptions are purchased and managed.
           </p>
 
           <p>
@@ -690,6 +788,23 @@
             or the establishment, exercise or defence of legal claims.
           </p>
 
+          <h3>Subscription and purchase information</h3>
+
+          <p>
+            RevenueCat subscription information is retained for as long as it
+            is necessary to provide and administer the account-linked Premium
+            entitlement. As part of a successful Vey account deletion, Vey
+            requests deletion of the RevenueCat customer associated with that
+            Vey account.
+          </p>
+
+          <p>
+            Deleting the RevenueCat customer does not cancel an active Google
+            Play subscription. Google may retain purchase, payment, tax, fraud
+            prevention and transaction records independently in accordance with
+            its own policies and legal obligations.
+          </p>
+
           <h3>Email delivery information</h3>
 
           <p>
@@ -734,7 +849,18 @@
 
           <p>
             Deleting the app from a device does not by itself delete a
-            connected cloud account or synchronized cloud data.
+            connected cloud account or synchronized cloud data. It also does
+            not cancel a Google Play subscription.
+          </p>
+
+          <p>
+            A successful Vey account deletion also deletes the corresponding
+            RevenueCat customer record used by Vey. It does not cancel the
+            underlying Google Play subscription. Users with an active
+            subscription should manage or cancel it in Google Play before
+            deleting their Vey account. Premium access in Vey ends when the
+            account deletion is completed because Premium access requires an
+            authenticated Vey account.
           </p>
 
           <p>

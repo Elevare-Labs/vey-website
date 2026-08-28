@@ -463,6 +463,28 @@ a {
   text-decoration: none;
 }
 
+.legal-notice {
+  margin: 18px 0 22px;
+  padding: 18px 20px;
+  border: 1px solid rgba(62, 224, 110, 0.24);
+  border-radius: 14px;
+  background: rgba(62, 224, 110, 0.06);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.legal-notice strong {
+  color: var(--text-primary);
+}
+
+.premium-note {
+  max-width: 860px;
+  margin: 26px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
 .updated-date {
   display: block;
   margin-top: 18px;
