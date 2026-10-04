@@ -1918,3 +1918,31 @@ a {
     height: 570px;
   }
 }
+
+
+/* Consistent homepage device mockups */
+.showcase-mockup {
+  width: min(100%, 350px);
+  padding: 8px;
+  border-radius: 44px;
+  transform: none;
+}
+
+.showcase-mockup:hover {
+  transform: none;
+}
+
+.showcase-mockup .phone-screen {
+  border-radius: 36px;
+}
+
+@media (max-width: 600px) {
+  .showcase-mockup {
+    width: min(90vw, 330px);
+    border-radius: 38px;
+  }
+
+  .showcase-mockup .phone-screen {
+    border-radius: 31px;
+  }
+}
