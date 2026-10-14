@@ -1876,12 +1876,11 @@ a {
 }
 
 .feature-grid-premium {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  max-width: 860px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .feature-grid-premium .feature-card {
-  min-height: 244px;
+  min-height: 260px;
 }
 
 @media (max-width: 1000px) {
@@ -1894,7 +1893,7 @@ a {
   }
 
   .feature-grid-premium {
-    max-width: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
